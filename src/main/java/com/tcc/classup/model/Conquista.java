@@ -1,16 +1,20 @@
 package com.tcc.classup.model;
 
 import jakarta.persistence.*;
-import jakarta.validation.constraints.DecimalMax;
-import jakarta.validation.constraints.DecimalMin;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
-@Table(name = "tb_conquista")
+@Table(
+        name = "tb_conquista",
+        uniqueConstraints = {
+                @UniqueConstraint(
+                        columnNames = {"disciplina_id","pontuacao_minima"}
+                )
+        }
+)
 @Getter
 @NoArgsConstructor
 public class Conquista {
@@ -31,10 +35,10 @@ public class Conquista {
 
     @Setter
     @NotNull
-    @DecimalMin("0.0")
-    @DecimalMax("20.0")
+    @Min(0)
+    @Max(20)
     @Column(nullable = false)
-    private Double pontuacaoMinima;
+    private Integer pontuacaoMinima;
 
     @ManyToOne
     @JoinColumn(name = "disciplina_id", nullable = false)
