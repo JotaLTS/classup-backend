@@ -13,7 +13,7 @@ import java.time.LocalDateTime;
 @Table(name = "tb_entrega_missao")
 @Getter
 @NoArgsConstructor
-public class EntregaMissao {
+public class EntregaAtividade {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -50,7 +50,7 @@ public class EntregaMissao {
 
     @Setter
     @ManyToOne
-    @JoinColumn(name = "missao_id",nullable = false)
-    private Missao missao;
+    @JoinColumn(name = "atividade_id",nullable = false)
+    private Atividade atividade;
 
 }

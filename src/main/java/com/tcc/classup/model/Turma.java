@@ -1,19 +1,26 @@
 package com.tcc.classup.model;
 
+import com.tcc.classup.enums.TipoTurma;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
-import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import java.time.LocalDate;
+
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Table(name = "tb_turma")
+@Table(
+        name = "tb_turma",
+        uniqueConstraints = {
+                @UniqueConstraint(
+                        columnNames = {"tipo_turma", "ano","semestre"}
+                )
+        }
+)
 @Getter
 @NoArgsConstructor
 public class Turma {
@@ -23,13 +30,15 @@ public class Turma {
     private Long id;
 
     @Setter
-    @NotBlank
-    @Column(nullable = false,length = 100)
-    private String nome;
+    @NotNull
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false)
+    private TipoTurma tipoTurma;
 
     @Setter
     @NotNull
     @Min(2000)
+    @Max(2100)
     @Column(nullable = false)
     private Integer ano;
 
@@ -40,19 +49,6 @@ public class Turma {
     @Column(nullable = false)
     private Integer semestre;
 
-    @Setter
-    @NotNull
-    @Column(nullable = false)
-    private LocalDate dataInicio;
-
-    @Setter
-    @NotNull
-    @Column(nullable = false)
-    private LocalDate dataFim;
-
     @OneToMany(mappedBy = "turma")
     private List<Aluno> alunos = new ArrayList<>();
-
-    @OneToMany(mappedBy = "turma")
-    private List<Disciplina> disciplinas = new ArrayList<>();
 }

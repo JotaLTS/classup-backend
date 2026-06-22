@@ -1,5 +1,6 @@
 package com.tcc.classup.model;
 
+import com.tcc.classup.enums.TipoAtividade;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.DecimalMax;
 import jakarta.validation.constraints.DecimalMin;
@@ -15,7 +16,7 @@ import java.time.LocalDateTime;
 @Table(name = "tb_missao")
 @Getter
 @NoArgsConstructor
-public class Missao {
+public class Atividade {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -33,6 +34,11 @@ public class Missao {
 
     @Setter
     @NotNull
+    @Column(nullable = false)
+    private TipoAtividade tipoAtividade;
+
+    @Setter
+    @NotNull
     @DecimalMin("0.0")
     @DecimalMax("10.0")
     @Column(nullable = false)
@@ -46,11 +52,6 @@ public class Missao {
     @NotNull
     @Column(nullable = false)
     private LocalDateTime prazoEntrega;
-
-    @Setter
-    @ManyToOne
-    @JoinColumn(name = "criador_id",nullable = false)
-    private Usuario criador;
 
     @Setter
     @ManyToOne
