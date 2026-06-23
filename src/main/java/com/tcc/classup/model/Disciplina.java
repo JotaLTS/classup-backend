@@ -42,5 +42,8 @@ public class Disciplina {
     @OneToMany(mappedBy = "disciplina")
     private List<Conquista> conquistas = new ArrayList<>();
 
+    @OneToMany(mappedBy = "disciplina")
+    private List<MaterialApoio> materiaisApoio = new ArrayList<>();
+
 
 }

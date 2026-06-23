@@ -12,8 +12,12 @@ import lombok.Setter;
         uniqueConstraints = {
                 @UniqueConstraint(
                         columnNames = {"disciplina_id","pontuacao_minima"}
+                ),
+                @UniqueConstraint(
+                        columnNames = {"disciplina_id","titulo"}
                 )
         }
+
 )
 @Getter
 @NoArgsConstructor

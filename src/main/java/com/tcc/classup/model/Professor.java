@@ -16,7 +16,6 @@ import java.util.List;
 
 public class Professor extends Usuario{
 
-    @Setter
     @NotBlank
     @Column(nullable = false,unique = true)
     private String idFuncional;

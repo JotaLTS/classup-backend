@@ -44,7 +44,7 @@ public class Atividade {
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
     private TipoAtividade tipoAtividade;
-    
+
     @Setter
     @NotNull
     @DecimalMin("0.0")

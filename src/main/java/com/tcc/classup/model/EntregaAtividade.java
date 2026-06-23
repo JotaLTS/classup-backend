@@ -45,7 +45,7 @@ public class EntregaAtividade {
     @NotNull
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
-    private StatusEntrega statusEntrega;
+    private StatusEntrega status;
 
     @Setter
     @Column(length = 500)

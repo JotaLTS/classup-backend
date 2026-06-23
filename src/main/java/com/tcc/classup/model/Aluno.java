@@ -13,7 +13,6 @@ import lombok.Setter;
 
 public class Aluno extends Usuario{
 
-    @Setter
     @NotBlank
     @Column(nullable = false,unique = true)
     private String matricula;

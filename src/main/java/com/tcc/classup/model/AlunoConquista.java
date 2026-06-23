@@ -25,12 +25,10 @@ public class AlunoConquista {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Setter
     @ManyToOne
     @JoinColumn(name = "aluno_id", nullable = false)
     private Aluno aluno;
 
-    @Setter
     @ManyToOne
     @JoinColumn(name = "conquista_id", nullable = false)
     private Conquista conquista;

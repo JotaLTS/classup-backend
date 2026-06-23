@@ -12,12 +12,10 @@ import lombok.Setter;
 @Entity
 @DiscriminatorValue("ADMINISTRADOR")
 @Getter
-@Setter
 @NoArgsConstructor
 
 public class Administrador extends Usuario{
 
-    @Setter
     @NotBlank
     @Column(nullable = false,unique = true)
     private String idFuncional;

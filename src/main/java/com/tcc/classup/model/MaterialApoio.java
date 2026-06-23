@@ -5,9 +5,19 @@ import jakarta.validation.constraints.NotBlank;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.CreationTimestamp;
+
+import java.time.LocalDateTime;
 
 @Entity
-@Table(name = "tb_material_apoio")
+@Table(
+        name = "tb_material_apoio",
+        uniqueConstraints = {
+                @UniqueConstraint(
+                        columnNames = {"disciplina_id", "titulo"}
+                )
+        }
+)
 @Getter
 @NoArgsConstructor
 public class MaterialApoio {
@@ -35,7 +45,10 @@ public class MaterialApoio {
     @Column(nullable = false)
     private String arquivoUrl;
 
-    @Setter
+    @CreationTimestamp
+    @Column(nullable = false, updatable = false)
+    private LocalDateTime dataCriacao;
+
     @ManyToOne
     @JoinColumn(name = "disciplina_id", nullable = false)
     private Disciplina disciplina;
