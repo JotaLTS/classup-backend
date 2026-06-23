@@ -13,7 +13,14 @@ import org.hibernate.annotations.CreationTimestamp;
 import java.time.LocalDateTime;
 
 @Entity
-@Table(name = "tb_missao")
+@Table(
+        name = "tb_atividade",
+        uniqueConstraints = {
+                @UniqueConstraint(
+                        columnNames = {"disciplina_id", "titulo"}
+                )
+        }
+)
 @Getter
 @NoArgsConstructor
 public class Atividade {
@@ -29,11 +36,11 @@ public class Atividade {
 
     @Setter
     @NotBlank
-    @Column(nullable = false,length = 500)
+    @Column(nullable = false,columnDefinition = "TEXT")
     private String descricao;
 
-    @Setter
     @NotNull
+    @Enumerated(EnumType.STRING)
     @Column(nullable = false)
     private TipoAtividade tipoAtividade;
 
@@ -53,7 +60,6 @@ public class Atividade {
     @Column(nullable = false)
     private LocalDateTime prazoEntrega;
 
-    @Setter
     @ManyToOne
     @JoinColumn(name = "disciplina_id",nullable = false)
     private Disciplina disciplina;

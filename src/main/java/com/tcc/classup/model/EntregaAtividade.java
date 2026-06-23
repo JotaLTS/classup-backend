@@ -3,6 +3,7 @@ package com.tcc.classup.model;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.DecimalMax;
 import jakarta.validation.constraints.DecimalMin;
+import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -10,7 +11,14 @@ import org.hibernate.annotations.CreationTimestamp;
 import java.time.LocalDateTime;
 
 @Entity
-@Table(name = "tb_entrega_missao")
+@Table(
+        name = "tb_entrega_atividade",
+        uniqueConstraints = {
+                @UniqueConstraint(
+                        columnNames = {"aluno_id", "atividade_id"}
+                )
+        }
+)
 @Getter
 @NoArgsConstructor
 public class EntregaAtividade {
@@ -20,10 +28,11 @@ public class EntregaAtividade {
     private Long id;
 
     @Setter
-    @Column(length = 500)
+    @Column(columnDefinition = "TEXT")
     private String resposta;
 
     @Setter
+    @Column(length = 1000)
     private String arquivoUrl;
 
     @Setter
@@ -35,7 +44,6 @@ public class EntregaAtividade {
     @Column(length = 500)
     private String feedback;
 
-    @Setter
     @Column(nullable = false, updatable = false)
     @CreationTimestamp
     private LocalDateTime dataEntrega;
@@ -43,12 +51,10 @@ public class EntregaAtividade {
     @Setter
     private LocalDateTime dataCorrecao;
 
-    @Setter
     @ManyToOne
     @JoinColumn(name = "aluno_id",nullable = false)
     private Aluno aluno;
 
-    @Setter
     @ManyToOne
     @JoinColumn(name = "atividade_id",nullable = false)
     private Atividade atividade;
