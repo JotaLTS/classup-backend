@@ -1,5 +1,6 @@
 package com.tcc.classup.model;
 
+import com.tcc.classup.enums.StatusEntrega;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.DecimalMax;
 import jakarta.validation.constraints.DecimalMin;
@@ -39,6 +40,12 @@ public class EntregaAtividade {
     @DecimalMin("0.0")
     @DecimalMax("10.0")
     private Double nota;
+
+    @Setter
+    @NotNull
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false)
+    private StatusEntrega statusEntrega;
 
     @Setter
     @Column(length = 500)

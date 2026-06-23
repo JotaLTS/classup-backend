@@ -1,5 +1,6 @@
 package com.tcc.classup.model;
 
+import com.tcc.classup.enums.StatusEntrega;
 import com.tcc.classup.enums.TipoAtividade;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.DecimalMax;
@@ -43,7 +44,7 @@ public class Atividade {
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
     private TipoAtividade tipoAtividade;
-
+    
     @Setter
     @NotNull
     @DecimalMin("0.0")
