@@ -148,7 +148,7 @@ Antes de executar o projeto, é necessário possuir:
 ### 1. Clonar o repositório
 
 ```bash
-git clone https://github.com/seu-usuario/classup.git
+git clone https://github.com/jotalts/classup.git
 ```
 
 ### 2. Acessar a pasta do projeto
