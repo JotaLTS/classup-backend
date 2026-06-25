@@ -17,7 +17,7 @@ import java.util.List;
 public class Professor extends Usuario{
 
     @NotBlank
-    @Column(nullable = false,unique = true)
+    @Column(nullable = false,unique = true,length = 20)
     private String idFuncional;
 
     @OneToMany(mappedBy = "professor")
