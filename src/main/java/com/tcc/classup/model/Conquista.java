@@ -44,6 +44,11 @@ public class Conquista {
     @Column(nullable = false)
     private Integer pontuacaoMinima;
 
+    @Setter
+    @NotBlank
+    @Column(nullable = false)
+    private String urlImagem;
+
     @ManyToOne
     @JoinColumn(name = "disciplina_id", nullable = false)
     private Disciplina disciplina;
