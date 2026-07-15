@@ -32,18 +32,17 @@ public class MaterialApoio {
     private String titulo;
 
     @Setter
+    @NotBlank
     @Column(columnDefinition = "TEXT")
     private String descricao;
 
     @Setter
-    @NotBlank
-    @Column(nullable = false)
     private String nomeArquivo;
 
     @Setter
     @NotBlank
     @Column(nullable = false)
-    private String arquivoUrl;
+    private String urlMaterial;
 
     @CreationTimestamp
     @Column(nullable = false, updatable = false)

@@ -1,0 +1,26 @@
+package com.tcc.classup.dto.materialApoio;
+
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
+import org.springframework.web.multipart.MultipartFile;
+
+public record MaterialApoioCreateDTO(
+
+        @NotBlank
+        @Size(max = 100)
+        String titulo,
+
+        @NotBlank
+        String descricao,
+
+        MultipartFile arquivo,
+
+        String urlMaterial,
+
+        @NotNull
+        Long disciplinaId
+
+
+) {
+}
