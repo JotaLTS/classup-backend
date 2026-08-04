@@ -1,5 +1,7 @@
 package com.tcc.classup.dto.aluno;
 
+import com.tcc.classup.enums.TipoTurma;
+
 public record AlunoResponseDTO(
 
         Long id,
@@ -10,6 +12,9 @@ public record AlunoResponseDTO(
 
         String matricula,
 
-        String turma
+        Long turmaId,
+
+        TipoTurma tipoTurma
+
 ) {
 }
