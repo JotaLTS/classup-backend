@@ -2,7 +2,7 @@ package com.tcc.classup.service.aluno;
 
 import com.tcc.classup.dto.aluno.AlunoCreateDTO;
 import com.tcc.classup.dto.aluno.AlunoResponseDTO;
-import com.tcc.classup.exception.RecursolJaCadastradoException;
+import com.tcc.classup.exception.RecursoJaCadastradoException;
 import com.tcc.classup.exception.RecursoNaoEncontradoException;
 import com.tcc.classup.mapper.aluno.AlunoMapper;
 import com.tcc.classup.model.Aluno;
@@ -29,11 +29,11 @@ public class AlunoServiceImpl implements AlunoService{
     @Override
     public AlunoResponseDTO criar(AlunoCreateDTO dto) {
         if(alunoRepository.findByEmail(dto.email()).isPresent()){
-            throw new RecursolJaCadastradoException("Esse email já está cadastrado");
+            throw new RecursoJaCadastradoException("Esse email já está cadastrado");
         }
 
         if(alunoRepository.findByMatricula(dto.matricula()).isPresent()){
-            throw new RecursolJaCadastradoException("Essa matricula já está cadastrada");
+            throw new RecursoJaCadastradoException("Essa matricula já está cadastrada");
         }
 
         Turma turma = turmaRepository.findById(dto.turmaId())
@@ -56,9 +56,10 @@ public class AlunoServiceImpl implements AlunoService{
 
     @Override
     public Page<AlunoResponseDTO> listar(Pageable pageable) {
-        Page<Aluno> lista = alunoRepository.findAll(pageable);
 
+        Page<Aluno> lista = alunoRepository.findAll(pageable);
         return lista.map(aluno -> alunoMapper.toResponseDTO(aluno));
+
     }
 
     @Override

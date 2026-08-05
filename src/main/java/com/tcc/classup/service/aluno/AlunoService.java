@@ -14,4 +14,6 @@ public interface AlunoService {
     Page<AlunoResponseDTO> listar(Pageable pageable);
 
     Page<AlunoResponseDTO> listarPorTurma(Long turmaId,Pageable pageable);
+
+
 }
