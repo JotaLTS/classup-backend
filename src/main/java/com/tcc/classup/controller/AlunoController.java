@@ -37,6 +37,7 @@ public class AlunoController {
 
         return ResponseEntity.ok(alunoService.listar(pageable));
     }
+
     @GetMapping("/turma/{turmaId}")
     public ResponseEntity<Page<AlunoResponseDTO>> listarPorTurma(@PathVariable Long turmaId, Pageable pageable){
 
