@@ -13,5 +13,5 @@ public interface ProfessorService {
     ProfessorResponseDTO buscarPorId(Long id);
 
     Page<ProfessorResponseDTO> listar(Pageable pageable);
-    
+
 }
