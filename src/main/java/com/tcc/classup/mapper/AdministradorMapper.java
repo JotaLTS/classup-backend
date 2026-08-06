@@ -1,4 +1,4 @@
-package com.tcc.classup.mapper.administrador;
+package com.tcc.classup.mapper;
 
 import com.tcc.classup.dto.administrador.AdministradorCreateDTO;
 import com.tcc.classup.dto.administrador.AdministradorResponseDTO;

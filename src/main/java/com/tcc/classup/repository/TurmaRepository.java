@@ -1,4 +1,4 @@
-package com.tcc.classup.repository.turma;
+package com.tcc.classup.repository;
 
 
 import com.tcc.classup.model.Turma;

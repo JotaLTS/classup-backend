@@ -1,4 +1,4 @@
-package com.tcc.classup.mapper.aluno;
+package com.tcc.classup.mapper;
 
 import com.tcc.classup.dto.aluno.AlunoCreateDTO;
 import com.tcc.classup.dto.aluno.AlunoResponseDTO;

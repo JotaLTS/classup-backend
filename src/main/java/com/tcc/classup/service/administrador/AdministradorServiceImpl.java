@@ -4,9 +4,9 @@ import com.tcc.classup.dto.administrador.AdministradorCreateDTO;
 import com.tcc.classup.dto.administrador.AdministradorResponseDTO;
 import com.tcc.classup.exception.RecursoNaoEncontradoException;
 import com.tcc.classup.exception.RecursoJaCadastradoException;
-import com.tcc.classup.mapper.administrador.AdministradorMapper;
+import com.tcc.classup.mapper.AdministradorMapper;
 import com.tcc.classup.model.Administrador;
-import com.tcc.classup.repository.administrador.AdministradorRepository;
+import com.tcc.classup.repository.AdministradorRepository;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
@@ -24,6 +24,10 @@ public class AdministradorServiceImpl implements  AdministradorService{
 
     @Override
     public AdministradorResponseDTO criar(AdministradorCreateDTO dto) {
+
+        if(administradorRepository.findByEmail(dto.email()).isPresent()){
+            throw new RecursoJaCadastradoException("Email já cadastrado");
+        }
 
         if(administradorRepository.findByIdFuncional(dto.idFuncional()).isPresent()){
             throw new RecursoJaCadastradoException("Id Funcional já cadastrado");

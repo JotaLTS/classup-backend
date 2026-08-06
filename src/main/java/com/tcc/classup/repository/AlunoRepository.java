@@ -1,4 +1,4 @@
-package com.tcc.classup.repository.aluno;
+package com.tcc.classup.repository;
 
 import com.tcc.classup.model.Aluno;
 import org.springframework.data.domain.Page;

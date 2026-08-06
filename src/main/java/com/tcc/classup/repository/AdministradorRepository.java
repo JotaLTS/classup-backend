@@ -1,4 +1,4 @@
-package com.tcc.classup.repository.administrador;
+package com.tcc.classup.repository;
 
 import com.tcc.classup.model.Administrador;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -10,4 +10,5 @@ public interface AdministradorRepository extends JpaRepository<Administrador,Lon
 
     Optional<Administrador> findByIdFuncional(String idFuncional);
 
+    Optional<Administrador> findByEmail(String email);
 }
