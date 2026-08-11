@@ -64,8 +64,10 @@ public class AlunoServiceImpl implements AlunoService{
 
     @Override
     public Page<AlunoResponseDTO> listarPorTurma(Long turmaId, Pageable pageable) {
+        if(!turmaRepository.existsById(turmaId)){
+            throw new RecursoNaoEncontradoException("Turma não encontrada com o id: " + turmaId);
+        }
         Page<Aluno> lista = alunoRepository.findByTurmaId(turmaId,pageable);
-
         return lista.map(aluno -> alunoMapper.toResponseDTO(aluno));
     }
 }
