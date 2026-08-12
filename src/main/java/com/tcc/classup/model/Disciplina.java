@@ -1,7 +1,5 @@
 package com.tcc.classup.model;
 
-
-
 import com.tcc.classup.enums.TipoTurma;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;

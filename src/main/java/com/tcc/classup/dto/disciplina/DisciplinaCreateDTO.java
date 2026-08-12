@@ -14,7 +14,6 @@ public record DisciplinaCreateDTO(
         @NotNull
         TipoTurma tipoTurma,
 
-        @NotNull
         Long professorId
 ) {
 }
