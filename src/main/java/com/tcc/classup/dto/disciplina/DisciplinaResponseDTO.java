@@ -10,6 +10,9 @@ public record DisciplinaResponseDTO(
 
         TipoTurma tipoTurma,
 
-        String professor
+        Long professorId,
+
+        String nomeProfessor
+
 ) {
 }
