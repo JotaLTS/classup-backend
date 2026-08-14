@@ -13,6 +13,7 @@ import org.mapstruct.MappingTarget;
 public interface DisciplinaMapper {
 
     @Mapping(target = "professor", source = "professor")
+    @Mapping(target = "nome",source = "disciplinaCreateDTO.nome")
     Disciplina toEntity(DisciplinaCreateDTO disciplinaCreateDTO, Professor professor);
 
     @Mapping(target = "professorId", source = "professor.id")
