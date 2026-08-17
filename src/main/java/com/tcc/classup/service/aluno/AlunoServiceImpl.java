@@ -11,6 +11,7 @@ import com.tcc.classup.repository.TurmaRepository;
 import com.tcc.classup.repository.AlunoRepository;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -19,11 +20,13 @@ public class AlunoServiceImpl implements AlunoService{
     private final AlunoRepository alunoRepository;
     private final AlunoMapper alunoMapper;
     private final TurmaRepository turmaRepository;
+    private final PasswordEncoder passwordEncoder;
 
-    public AlunoServiceImpl(AlunoRepository alunoRepository, AlunoMapper alunoMapper,TurmaRepository turmaRepository){
+    public AlunoServiceImpl(AlunoRepository alunoRepository, AlunoMapper alunoMapper, TurmaRepository turmaRepository, PasswordEncoder passwordEncoder){
         this.alunoRepository = alunoRepository;
         this.alunoMapper = alunoMapper;
         this.turmaRepository = turmaRepository;
+        this.passwordEncoder = passwordEncoder;
     }
 
     @Override
@@ -40,7 +43,7 @@ public class AlunoServiceImpl implements AlunoService{
                 .orElseThrow(() -> new RecursoNaoEncontradoException("Turma não encontrada"));
 
         Aluno aluno = alunoMapper.toEntity(dto,turma);
-
+        aluno.setSenha(passwordEncoder.encode("Mudar123"));
         Aluno salvo = alunoRepository.save(aluno);
 
         return alunoMapper.toResponseDTO(salvo);
