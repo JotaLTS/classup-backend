@@ -28,7 +28,7 @@ public class Turma {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
+    
     @NotNull
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
