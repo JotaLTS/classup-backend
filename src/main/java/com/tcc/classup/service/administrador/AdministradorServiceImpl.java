@@ -9,6 +9,7 @@ import com.tcc.classup.model.Administrador;
 import com.tcc.classup.repository.AdministradorRepository;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -16,10 +17,12 @@ public class AdministradorServiceImpl implements  AdministradorService{
 
     private final AdministradorRepository administradorRepository;
     private final AdministradorMapper administradorMapper;
+    private final PasswordEncoder passwordEncoder;
 
-    public AdministradorServiceImpl(AdministradorRepository administradorRepository, AdministradorMapper administradorMapper) {
+    public AdministradorServiceImpl(AdministradorRepository administradorRepository, AdministradorMapper administradorMapper, PasswordEncoder passwordEncoder) {
         this.administradorRepository = administradorRepository;
         this.administradorMapper = administradorMapper;
+        this.passwordEncoder = passwordEncoder;
     }
 
     @Override
@@ -34,7 +37,7 @@ public class AdministradorServiceImpl implements  AdministradorService{
         }
 
         Administrador administrador = administradorMapper.toEntity(dto);
-
+        administrador.setSenha(passwordEncoder.encode("Mudar123"));
         Administrador salvo = administradorRepository.save(administrador);
 
         return administradorMapper.toResponseDTO(salvo);
