@@ -10,6 +10,7 @@ import com.tcc.classup.model.Professor;
 import com.tcc.classup.repository.ProfessorRepository;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -17,10 +18,12 @@ public class ProfessorServiceImpl implements ProfessorService{
 
     private final ProfessorRepository professorRepository;
     private final ProfessorMapper professorMapper;
+    private final PasswordEncoder passwordEncoder;
 
-    public ProfessorServiceImpl(ProfessorRepository professorRepository, ProfessorMapper professorMapper) {
+    public ProfessorServiceImpl(ProfessorRepository professorRepository, ProfessorMapper professorMapper, PasswordEncoder passwordEncoder) {
         this.professorRepository = professorRepository;
         this.professorMapper = professorMapper;
+        this.passwordEncoder = passwordEncoder;
     }
 
     @Override
@@ -33,7 +36,7 @@ public class ProfessorServiceImpl implements ProfessorService{
         }
 
         Professor professor = professorMapper.toEntity(dto);
-
+        professor.setSenha(passwordEncoder.encode("Mudar123"));
         Professor salvo = professorRepository.save(professor);
 
         return professorMapper.toResponseDTO(salvo);
