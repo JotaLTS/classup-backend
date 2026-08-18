@@ -28,18 +28,21 @@ public class Turma {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    
+
+    @Setter
     @NotNull
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
     private TipoTurma tipoTurma;
 
+    @Setter
     @NotNull
     @Min(2000)
     @Max(2100)
     @Column(nullable = false)
     private Integer ano;
 
+    @Setter
     @NotNull
     @Min(1)
     @Max(2)
