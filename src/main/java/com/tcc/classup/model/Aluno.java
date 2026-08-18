@@ -13,13 +13,14 @@ import lombok.Setter;
 
 public class Aluno extends Usuario{
 
+    @Setter
     @NotBlank
-    @Column(nullable = false,unique = true,length = 20)
+    @Column(unique = true,length = 20)
     private String matricula;
 
     @Setter
     @ManyToOne
-    @JoinColumn(name = "turma_id",nullable = false)
+    @JoinColumn(name = "turma_id")
     private Turma turma;
 
 }
