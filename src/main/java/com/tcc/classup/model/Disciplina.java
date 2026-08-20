@@ -27,6 +27,7 @@ public class Disciplina {
     @Column(nullable = false,length = 100,unique = true)
     private String nome;
 
+    @Setter
     @NotNull
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
