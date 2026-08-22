@@ -3,6 +3,7 @@ package com.tcc.classup.controller;
 import com.tcc.classup.dto.turma.TurmaCreateDTO;
 import com.tcc.classup.dto.turma.TurmaResponseDTO;
 import com.tcc.classup.service.turma.TurmaService;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
