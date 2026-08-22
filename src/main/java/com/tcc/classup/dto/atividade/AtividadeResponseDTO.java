@@ -18,6 +18,8 @@ public record AtividadeResponseDTO(
 
         LocalDateTime prazoEntrega,
 
-        String disciplina
+        String nomeDisciplina,
+
+        Long disciplinaId
 ) {
 }
